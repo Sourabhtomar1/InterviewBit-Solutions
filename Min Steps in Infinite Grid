@@ -1,0 +1,13 @@
+//Wrong Approach
+//--traverse horizontal to tarx and then traverse vertical to tary and cnt
+//idea is to traverse diagnallay and then traverse horizontally and vertically
+int Solution::coverPoints(vector<int> &A, vector<int> &B) {
+    long long int ans=0;
+    for(int i=1;i<A.size();i++){
+        if(abs(A[i]-A[i-1])>abs(B[i]-B[i-1]))
+          ans+=abs(A[i]-A[i-1]);
+        else 
+          ans+=abs(B[i]-B[i-1]);
+    }
+    return ans;
+}
