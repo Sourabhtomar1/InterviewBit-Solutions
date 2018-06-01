@@ -1,0 +1,27 @@
+vector<int> Solution::maxset(vector<int> &A) {
+   long long  int sum=-99999999,ans=-9999999,s,e,len=0,as,ae=-1;int i=0;
+   // len keeps trace of maximum length ,as=starting index,ae=ending index
+    while(i<A.size()){
+        if(A[i]>=0){
+            s=i;
+            sum=0;
+            len=0;
+            while(A[i]>=0&&i<A.size()){//sum of element till the negative element occur or end of array
+                sum+=A[i];
+                i++;
+            }
+            e=i-1;
+            if((sum>ans)||(sum==ans&&e-s+1<len)){
+                as=s;//new start
+                ae=e;//end
+                ans=sum;//max sum 
+                len=e+s-1;//length of continous array
+            }
+            
+        }
+        i++;
+    }
+    vector<int>c;
+    for(int i=as;i<=ae;i++)c.push_back(A[i]);
+    return c;//returning vector
+}
