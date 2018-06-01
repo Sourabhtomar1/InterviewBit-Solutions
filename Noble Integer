@@ -1,0 +1,31 @@
+//Naive Approach--O(n^2) Complexity
+int Solution::solve(vector<int> &A) {
+    int cnt=0,flag=0;
+    for(int i=0;i<A.size();i++){
+        for(int j=i+1;j<A.size();j++){
+            if(A[j]>A[i])cnt++;
+        }if(cnt==A[i]){
+            flag=1;break;
+        }
+    }
+    if(flag)return 1;
+    else return -1;
+}
+
+
+
+//Efficient Approach---O(nlogn)
+// idea is to sort the array and then check if next element is same as current or not if not then just check the number of element after
+//that element if they are equal to current element then just return 1 
+
+//Case 2. one element 0 and rest  are negative then answer should be 0;
+int Solution::solve(vector<int> &A) {
+    int cnt=0,flag=0;
+   sort(A.begin(),A.end());
+   for(int i=0;i<A.size()-1;i++){
+       if(A[i]==A[i+1])continue;
+       if(A[i]==A.size()-i-1)return 1;
+   }
+   if(A[A.size()-1]==0)return 1;
+   return -1;
+}
